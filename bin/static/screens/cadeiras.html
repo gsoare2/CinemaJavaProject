@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/master.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+.myTop {
+  width: 93vw;
+}
+.btn-personal {
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 16px;
+    border: 0;
+    background: #5C2EAE;
+    color: #fff;
+    transition: all .3s;
+    margin-top: 30px;
+    margin-left: 45%;
+    cursor: pointer;
+    outline: none;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    color: #fafafa;
+}
+.myTop {
+  width: 100vw;
+  margin-bottom: 50px;
+}
+.myBody {
+  width: 80vw;
+}
+
+.myButtonGroup{
+  font-family: 'Open sans';
+  font-size: 16px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #bcbcbc;
+  list-style-type: none;
+}
+li {
+  cursor: pointer;
+  margin-right: 40px;
+  font-weight: 600;
+}
+</style>
+<body style="background: #18202E">
+    <div class="myContainer">
+      <div class="myTop">
+        <div class="myInputGroup">
+          <!--<input class="searchInput" type="text" placeholder="Procure por um filme e aperte enter">-->
+        </div>
+        <div class="myButtonGroup">
+          <li id="chat">Chat</li>
+          <li id="sair">Sair</li>
+        </div>
+      </div>
+      <div class="myContent">
+        <div class="mySeat active">A1</div>
+        <div class="mySeat active">A2</div>
+        <div class="mySeat active">A3</div>
+        <div class="mySeat active">A4</div>
+        <div class="mySeat active">A5</div>
+        <div class="mySeat active">A6</div>
+        <div class="mySeat active">A7</div>
+        <div class="mySeat active">A8</div>
+        <div class="mySeat active">A9</div>
+
+      </div>
+    </div>
+    <button class="btn-personal confirm">confirm</button>
+    <script>
+
+
+    var seats = [];
+
+    $("div.mySeat").on('click', function() {
+        var q = $(this).text();
+        console.log(q);
+        $(".selectionSeats").empty();
+        $(this).toggleClass('active');
+        console.log("mudou");
+        if(!$(this).hasClass('active')) {
+            seats.push($(this).text());
+            console.log(seats);
+        }
+        if($(this).hasClass('active')) {
+            let indice = seats.indexOf(q);
+            let removed = seats.splice(indice, 1);
+        }
+        $(".selectionSeats").append(seats);
+    });
+
+    $('.confirm').on('click', function() {
+        if(seats.length == 0) {
+            $(".selectionSeats").append("<h4>Vazio n da seu zé mané</h4>");
+        }
+        else {
+            sessionStorage.setItem("seats", seats);
+            var url = window.location.search;
+            $(location).attr("href", "escolherIngressos.html?nomeFilme="+trataUrl(url)+"&seats="+seats+"");
+        }
+        console.log(seats);
+    });
+
+    function trataUrl(url) {
+        var indice = url.indexOf("=");
+        var aux = url.slice(indice+1, url.length);
+        var k = 0;
+        while(k != -1) {
+            k = aux.indexOf("%", k+1);
+            aux = aux.replace("%20", " ");
+        }
+        return aux;
+    }
+
+    </script>
+</body>
+
+</html>

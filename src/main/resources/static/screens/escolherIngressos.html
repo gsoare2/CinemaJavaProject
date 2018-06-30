@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cinestation</title>
+    <link rel="stylesheet" href="../css/master.css" />
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+</head>
+<style>
+.myTop {
+  width: 93vw;
+}
+.btn-personal {
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 16px;
+    border: 0;
+    background: #5C2EAE;
+    color: #fff;
+    transition: all .3s;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    color: #fafafa;
+}
+.myTop {
+  width: 100vw;
+}
+.myBody {
+  width: 80vw;
+}
+.menu {
+  float: left;
+}
+.myButtonGroup{
+  font-family: 'Open sans';
+  font-size: 16px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #bcbcbc;
+  list-style-type: none;
+}
+li {
+  cursor: pointer;
+  margin-right: 40px;
+  font-weight: 600;
+}
+.contador {
+    width: 100px;
+    height: 80px;
+}
+.numView {
+    width: 40px;
+    text-align: center;
+    padding: 0;
+}
+button {
+    cursor: pointer;
+}
+h1 {
+  color: #fff;
+}
+.view {
+  color: #fff;
+}
+.myBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
+
+<body style="background: #18202E">
+    <div class="myContainer">
+      <div class="myTop">
+        <div class="myInputGroup">
+          <input class="searchInput" type="text" placeholder="Procure por um filme">
+        </div>
+        <div class="myButtonGroup">
+          <a href="screens/form-login.html" class="btn-personal">Login</a>
+          <a href="screens/form-register.html" class="btn-personal">Register</a>
+        </div>
+      </div>
+
+
+
+      <div id="myBodyContent" class="myBody">
+        <h1>Escolha seus ingressos</h1>
+        <div>
+            <div class="contador">
+                <span class="view">Ingressos comuns</span>
+                <div class="content_">
+                    <button id="minus">-</button>
+                    <input id="numView" class="numView" type="text" disabled value="" />
+                    <button id="plus">+</button>
+                </div>
+            </div>
+            <button type="submit" id="submit" class="button">Submit</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script>
+        var qtdTotalIngressos = -1;
+        var i = 0;
+
+        $(document).ready(function() {
+            $("#numView").val(i);
+            getUrl();
+            $("#submit").click(function() {
+                if(i > 0 && i == qtdTotalIngressos) {
+                    console.log(i);
+                    console.log(qtdTotalIngressos);
+                    $(location).attr("href", "compraRealizada.html");
+                }
+            });
+        });
+
+        $("#minus").click(function() {
+            if(i-1 > -1) {
+                $("#numView").val(i=i-1);
+            }
+        });
+
+        $("#plus").click(function() {
+            if(i+1 < qtdTotalIngressos+1) {
+                $("#numView").val(i=i+1);
+            }
+        });
+
+        function getUrl() {
+            var url = window.location.search;
+            var indices = [];
+            var k = 0;
+            var p = 1;
+            var t = 0;
+            var aux;
+            var indice = 1;
+            var aux2;
+            while(aux != -1) {
+                k = url.indexOf("&", aux+1);
+                aux = k;
+                if(k == -1) {
+                    k = url.length;
+                }
+                indice = url.indexOf("=", indice+1);
+                if(p == 1) {
+                    aux2 = url.slice(indice+1, k);
+
+                    while(t != -1) {
+                        t = aux2.indexOf("%", t+1);
+                        aux2 = aux2.replace("%20", " ");
+                    }
+                }
+                else {
+                    let g;
+
+                    aux2 = url.slice(indice+1, k);
+                    while(g != -1) {
+                        g = aux2.indexOf("A", g+1);
+                        qtdTotalIngressos = qtdTotalIngressos + 1;
+                    }
+                    console.log(qtdTotalIngressos);
+                }
+                sessionStorage.setItem(url.slice(p, indice), aux2);
+                p = k+1;
+            }
+
+        }
+    </script>
+    <!--<script src="../js/master.js"></script>->
+</body>
+</html>

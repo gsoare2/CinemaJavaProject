@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cinestation</title>
+    <link rel="stylesheet" href="../css/master.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+.btn-personal {
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 16px;
+    background: #7437b2;
+    color: #fff;  
+}
+.myContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.mySubContainer {
+    width: 48%;
+}
+</style>
+<body>
+    <form id="form" method="post" class="container">
+        <div class="container myContainer">
+            <div class="container mySubContainer">
+                <div class="row justify-content-start align-items-center">
+                    <div class="col-8 col-sm-5 col-md-6">
+                        <div class="form-group">
+                            <label for="fisrtName">First name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Enter email">
+                        </div>
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-6">
+                        <div class="form-group">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start align-items-start">
+                    <div class="col-7 col-sm-4 col-md-5">
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="Enter email">
+                        </div>
+                    </div>
+                    <div class="col-9 col-sm-6 col-md-7">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="text" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start align-items-start">
+                    <div class="col-11 col-sm-7 col-md-6">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start align-items-start">
+                    <div class="col-8 col-sm-5 col-md-6">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" id="password" placeholder="Enter email">
+                        </div>
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-6">
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm password</label>
+                            <input type="text" class="form-control" id="confirmPassword" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mySubContainer">
+                <div class="row justify-content-start align-items-center">
+                    <div class="col-8 col-sm-5 col-md-8">
+                        <div class="form-group">
+                            <label for="nomePessoaCartao">Nome pessoa cartao</label>
+                            <input type="text" class="form-control" id="nomePessoaCartao" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start align-items-start">
+                    <div class="col-9 col-sm-6 col-md-7">
+                        <div class="form-group">
+                            <label for="numeroCartao">numero cartao</label>
+                            <input type="text" class="form-control" id="numeroCartao" placeholder="Enter email">
+                        </div>
+                    </div>
+                    <div class="col-7 col-sm-4 col-md-5">
+                        <div class="form-group">
+                            <label for="numeroSeguranca">numero de segurança</label>
+                            <input type="text" class="form-control" id="numeroSeguranca" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start align-items-start">
+                    <div class="col-11 col-sm-7 col-md-6">
+                        <div class="form-group">
+                            <label for="bandeiraCartao">bandeiraCartao</label>
+                            <input type="text" class="form-control" id="bandeiraCartao" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start align-items-start">
+                    <div class="col-8 col-sm-5 col-md-6">
+                        <div class="form-group">
+                            <label for="dataVencimento">data vencimento</label>
+                            <input type="text" class="form-control" id="dataVencimento" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" id="register" class="button">Submit</button>
+
+        
+    </form>
+        
+    <script src="../js/form-register.js"></script>
+</body>
+</html>
